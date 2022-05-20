@@ -1,0 +1,55 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "panama city beach flags",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": [
+            "quit",
+            "cancel"
+          ]
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": [
+            "no",
+            "stop"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "LearnMoreIntent",
+          "slots": [],
+          "samples": [
+            "tell me more",
+            "learn more",
+            "yes"
+          ]
+        },
+        {
+          "name": "StartOverIntent",
+          "slots": [],
+          "samples": [
+            "panama city beach safety flags status",
+            "flag status",
+            "panama city beach flags status"
+          ]
+        }
+      ],
+      "types": []
+    }
+  },
+  "version": "3"
+}

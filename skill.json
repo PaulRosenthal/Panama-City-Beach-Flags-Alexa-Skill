@@ -1,0 +1,169 @@
+{
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "summary": "Get the beach flag status for Panama City Beach, Florida.",
+          "examplePhrases": [
+            "Alexa panama city beach flags",
+            "Alexa open panama city beach flags"
+          ],
+          "keywords": [
+            "panama",
+            "city",
+            "beach",
+            "safety",
+            "flags",
+            "beach",
+            "conditions"
+          ],
+          "name": "Panama City Beach Safety Flags",
+          "description": "The Panama City Beach Safety Flags skill for Amazon Alexa reports the current beach safety flag status in Panama City Beach, Florida. Safety information is also available through this skill.",
+          "smallIconUri": "file://assets/images/en-US_smallIconUri.png",
+          "largeIconUri": "file://assets/images/en-US_largeIconUri.png"
+        },
+        "en-CA": {
+          "summary": "Get the beach flag status for Panama City Beach, Florida.",
+          "examplePhrases": [
+            "Alexa panama city beach flags",
+            "Alexa open panama city beach flags"
+          ],
+          "keywords": [
+            "panama",
+            "city",
+            "beach",
+            "safety",
+            "flags",
+            "beach",
+            "conditions"
+          ],
+          "name": "Panama City Beach Safety Flags",
+          "description": "The Panama City Beach Safety Flags skill for Amazon Alexa reports the current beach safety flag status in Panama City Beach, Florida. Safety information is also available through this skill.",
+          "smallIconUri": "file://assets/images/en-CA_smallIconUri.png",
+          "largeIconUri": "file://assets/images/en-CA_largeIconUri.png"
+        },
+        "en-IN": {
+          "summary": "Get the beach flag status for Panama City Beach, Florida.",
+          "examplePhrases": [
+            "Alexa panama city beach flags",
+            "Alexa open panama city beach flags"
+          ],
+          "keywords": [
+            "panama",
+            "city",
+            "beach",
+            "safety",
+            "flags",
+            "beach",
+            "conditions"
+          ],
+          "name": "Panama City Beach Safety Flags",
+          "description": "The Panama City Beach Safety Flags skill for Amazon Alexa reports the current beach safety flag status in Panama City Beach, Florida. Safety information is also available through this skill.",
+          "smallIconUri": "file://assets/images/en-IN_smallIconUri.png",
+          "largeIconUri": "file://assets/images/en-IN_largeIconUri.png"
+        },
+        "en-AU": {
+          "summary": "Get the beach flag status for Panama City Beach, Florida.",
+          "examplePhrases": [
+            "Alexa panama city beach flags",
+            "Alexa open panama city beach flags"
+          ],
+          "keywords": [
+            "panama",
+            "city",
+            "beach",
+            "safety",
+            "flags",
+            "beach",
+            "conditions"
+          ],
+          "name": "Panama City Beach Safety Flags",
+          "description": "The Panama City Beach Safety Flags skill for Amazon Alexa reports the current beach safety flag status in Panama City Beach, Florida. Safety information is also available through this skill.",
+          "smallIconUri": "file://assets/images/en-AU_smallIconUri.png",
+          "largeIconUri": "file://assets/images/en-AU_largeIconUri.png"
+        },
+        "en-GB": {
+          "summary": "Get the beach flag status for Panama City Beach, Florida.",
+          "examplePhrases": [
+            "Alexa panama city beach flags",
+            "Alexa open panama city beach flags"
+          ],
+          "keywords": [
+            "panama",
+            "city",
+            "beach",
+            "safety",
+            "flags",
+            "beach",
+            "conditions"
+          ],
+          "name": "Panama City Beach Safety Flags",
+          "description": "The Panama City Beach Safety Flags skill for Amazon Alexa reports the current beach safety flag status in Panama City Beach, Florida. Safety information is also available through this skill.",
+          "smallIconUri": "file://assets/images/en-GB_smallIconUri.png",
+          "largeIconUri": "file://assets/images/en-GB_largeIconUri.png"
+        }
+      },
+      "automaticDistribution": {
+        "isActive": false
+      },
+      "isAvailableWorldwide": true,
+      "testingInstructions": "There are no specific testing instructions, only following prompts given to users. All data is sourced from publicly available data. Thank you!",
+      "category": "WEATHER",
+      "distributionMode": "PUBLIC",
+      "automaticClonedLocale": {
+        "locales": [
+          {
+            "source": "en-US",
+            "targets": [
+              "en-AU",
+              "en-CA",
+              "en-GB",
+              "en-IN"
+            ]
+          }
+        ]
+      },
+      "distributionCountries": []
+    },
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "uri": "[ARN]"
+        },
+        "interfaces": [],
+        "regions": {
+          "EU": {
+            "endpoint": {
+              "uri": "[ARN]"
+            }
+          },
+          "NA": {
+            "endpoint": {
+              "uri": "[ARN]"
+            }
+          },
+          "FE": {
+            "endpoint": {
+              "uri": "[ARN]"
+            }
+          }
+        }
+      }
+    },
+    "manifestVersion": "1.0",
+    "privacyAndCompliance": {
+      "allowsPurchases": false,
+      "locales": {
+        "en-US": {},
+        "en-CA": {},
+        "en-IN": {},
+        "en-AU": {},
+        "en-GB": {}
+      },
+      "containsAds": false,
+      "isExportCompliant": true,
+      "isChildDirected": false,
+      "usesPersonalInfo": false
+    }
+  }
+}
