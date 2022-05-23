@@ -22,7 +22,7 @@ const LaunchRequestHandler = {
                 url: "https://wrapapi.com/use/PaulRosenthal/panama_city_beach_flags/current_flag_description/latest",
                 method: 'post',
                 data: {
-                    "wrapAPIKey": "[API_Key]"
+                    "wrapAPIKey": "[API_KEY]"
                     
                 }
                 
@@ -46,6 +46,26 @@ const LaunchRequestHandler = {
                     console.log(flag_description)
                     return flag_description
                })
+        
+        // Parse the flag description in lower case to identify
+        // the flag's current color along with a description.
+        flag_description = flag_description.toLowerCase();
+        if (flag_description.includes("low")) {
+            flag_description = "green - Low hazard with calm conditions"
+        }
+        if (flag_description.includes("medium")) {
+            flag_description = "yellow - medium hazard, moderate surf and/or strong currents"
+        }
+        if (flag_description.includes("strong")) {
+            flag_description = "red - strong surf and/or currents"
+        }
+        if (flag_description.includes("closed")) {
+            flag_description = "double red - the water is closed to the public"
+        }
+        if (flag_description.includes("marine")) {
+            var purple_flag = ". Purple flags are also flying on the beach, indicating dangerous marine life such as jellyfish"
+            flag_description = flag_description + purple_flag
+        }
         
         speakOutput = 'The flag status in Panama City Beach is currently ' + flag_description +
         '. Would you like to learn more?';
@@ -204,3 +224,4 @@ exports.handler = Alexa.SkillBuilders.custom()
         ErrorHandler)
     .withCustomUserAgent('sample/hello-world/v1.2')
     .lambda();
+    
