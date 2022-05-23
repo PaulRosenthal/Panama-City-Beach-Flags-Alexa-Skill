@@ -2,7 +2,7 @@
  * The basis for this Alexa Skill comes from the Alexa SDK and instructions provided for getting started.
  * To request an API key for the endpoint returning the current flag color, please contact me (Paul Rosenthal).
  * */
-
+ 
 const Alexa = require('ask-sdk-core');
 const axios = require('axios').default;
 
@@ -11,7 +11,7 @@ async function getDetailedFlagDescription(flag_description) {
     // the flag's current color along with a description.
     flag_description = flag_description.toLowerCase();
     if (flag_description.includes("low")) {
-        flag_description = "green - Low hazard with calm conditions"
+        flag_description = "green - low hazard with calm conditions"
     } else if (flag_description.includes("medium")) {
         flag_description = "yellow - medium hazard, moderate surf and/or strong currents"
     } else if (flag_description.includes("strong")) {
@@ -74,6 +74,8 @@ const LaunchRequestHandler = {
         
         catch (err) {
             console.log('Error encountered: ' + err);
+            speakOutput = 'Unfortunately, an error was encountered when trying to '
+            + 'retrieve the Panama City Beach flag status. Please try again soon.';
         }
 
         return handlerInput.responseBuilder
@@ -183,7 +185,6 @@ const IntentReflectorHandler = {
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
             .getResponse();
     }
 };
@@ -225,3 +226,4 @@ exports.handler = Alexa.SkillBuilders.custom()
         ErrorHandler)
     .withCustomUserAgent('sample/hello-world/v1.2')
     .lambda();
+    
