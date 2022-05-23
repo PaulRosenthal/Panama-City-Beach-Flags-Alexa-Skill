@@ -6,6 +6,26 @@
 const Alexa = require('ask-sdk-core');
 const axios = require('axios').default;
 
+async function getDetailedFlagDescription(flag_description) {
+    // Parse the flag description in lower case to identify
+    // the flag's current color along with a description.
+    flag_description = flag_description.toLowerCase();
+    if (flag_description.includes("low")) {
+        flag_description = "green - Low hazard with calm conditions"
+    } else if (flag_description.includes("medium")) {
+        flag_description = "yellow - medium hazard, moderate surf and/or strong currents"
+    } else if (flag_description.includes("strong")) {
+        flag_description = "red - strong surf and/or currents"
+    } else if (flag_description.includes("closed")) {
+        flag_description = "double red - the water is closed to the public"
+    }
+    if (flag_description.includes("marine")) {
+        var purple_flag = ". Purple flags are also flying on the beach, indicating dangerous marine life such as jellyfish"
+        flag_description = flag_description + purple_flag
+    }
+    return flag_description;
+}
+
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest'
@@ -15,7 +35,7 @@ const LaunchRequestHandler = {
     async handle(handlerInput) {
         
         var speakOutput = 'There was an error retrieving the Panama City Beach flag' +
-        ' status. Please try again soon. Say Cancel to exit.';
+        ' status. Please try again soon. Say "Cancel" to exit.';
         
         try {
             var flag_description = await axios({
@@ -23,7 +43,6 @@ const LaunchRequestHandler = {
                 method: 'post',
                 data: {
                     "wrapAPIKey": "[API_KEY]"
-                    
                 }
                 
             
@@ -47,27 +66,9 @@ const LaunchRequestHandler = {
                     return flag_description
                })
         
-        // Parse the flag description in lower case to identify
-        // the flag's current color along with a description.
-        flag_description = flag_description.toLowerCase();
-        if (flag_description.includes("low")) {
-            flag_description = "green - Low hazard with calm conditions"
-        }
-        if (flag_description.includes("medium")) {
-            flag_description = "yellow - medium hazard, moderate surf and/or strong currents"
-        }
-        if (flag_description.includes("strong")) {
-            flag_description = "red - strong surf and/or currents"
-        }
-        if (flag_description.includes("closed")) {
-            flag_description = "double red - the water is closed to the public"
-        }
-        if (flag_description.includes("marine")) {
-            var purple_flag = ". Purple flags are also flying on the beach, indicating dangerous marine life such as jellyfish"
-            flag_description = flag_description + purple_flag
-        }
+        var detailed_flag_description = await getDetailedFlagDescription(flag_description);
         
-        speakOutput = 'The flag status in Panama City Beach is currently ' + flag_description +
+        speakOutput = 'The flag status in Panama City Beach is currently ' + detailed_flag_description +
         '. Would you like to learn more?';
         }
         
@@ -224,4 +225,3 @@ exports.handler = Alexa.SkillBuilders.custom()
         ErrorHandler)
     .withCustomUserAgent('sample/hello-world/v1.2')
     .lambda();
-    
