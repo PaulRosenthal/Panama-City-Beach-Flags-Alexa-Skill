@@ -11,16 +11,16 @@ async function getDetailedFlagDescription(flag_description) {
     // the flag's current color along with a description.
     flag_description = flag_description.toLowerCase();
     if (flag_description.includes("low")) {
-        flag_description = "green - low hazard with calm conditions"
+        flag_description = "green. This color indicates generally low hazard with calm conditions"
     } else if (flag_description.includes("medium")) {
-        flag_description = "yellow - medium hazard, moderate surf and/or strong currents"
+        flag_description = "yellow. This color indicates medium hazard, moderate surf and/or strong currents"
     } else if (flag_description.includes("strong")) {
-        flag_description = "red - strong surf and/or currents"
+        flag_description = "red. This color indicates strong surf and/or currents, and you should not enter the water above knee level"
     } else if (flag_description.includes("closed")) {
-        flag_description = "double red - the water is closed to the public"
+        flag_description = "double red. The water is closed to the public"
     }
     if (flag_description.includes("marine")) {
-        var purple_flag = ". Purple flags are also flying on the beach, indicating dangerous marine life such as jellyfish"
+        var purple_flag = ". Purple flags are also flying on the beach, indicating dangerous marine life such as jellyfish are present"
         flag_description = flag_description + purple_flag
     }
     return flag_description;
@@ -97,7 +97,7 @@ const LearnMoreIntentHandler = {
         + "currents. Do not enter the water above knee level. Double red flags mean that the water "
         + "is dangerous and it is illegal to enter it. Finally, purple flags indicate that marine "
         + "pests such as jellyfish are present. Thank you for checking on the flag status. "
-        + "Talk to you soon!";
+        + "Stay safe!";
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -129,7 +129,7 @@ const CancelAndStopIntentHandler = {
                 || Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.StopIntent');
     },
     handle(handlerInput) {
-        const speakOutput = 'Thank you for checking on the flag status. Talk to you soon!';
+        const speakOutput = 'Thank you for checking on the flag status. Stay safe!';
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
