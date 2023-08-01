@@ -11,4 +11,6 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: '20.4.0'
-    - run: node /current-flag-status/retrieve-current-flag-status.js
+        cache: 'npm'
+        cache-dependency-path: current-flag-status/package-lock.json
+    - run: node current-flag-status/retrieve-current-flag-status.js
