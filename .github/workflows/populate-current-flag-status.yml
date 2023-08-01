@@ -15,6 +15,6 @@ jobs:
         cache-dependency-path: current-flag-status/package-lock.json
     - name: Install Depdendencies
       run: npm ci
-      working-directory: current-flag-status
+      working_directory: current-flag-status
     - name: Run Flag Status Retrieval Script
-      working-directory: current-flag-status
+      run: node current-flag-status/retrieve-current-flag-status.js
