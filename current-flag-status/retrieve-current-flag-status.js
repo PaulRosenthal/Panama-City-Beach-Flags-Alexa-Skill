@@ -2,6 +2,7 @@
 var axios = require('axios');
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
+const fs = require('fs');
 
 
 // Define an async function that takes a URL as an argument and returns a promise
@@ -36,6 +37,14 @@ async function main() {
   var result = await getFlagDescription(url);
   // Print the result
   console.log("The flag status text is: " + result);
+
+  fs.writeFile('current-flag-status.txt', result, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('The output has been saved to the file.');
+    }
+  });
 }
 
 // Call main
