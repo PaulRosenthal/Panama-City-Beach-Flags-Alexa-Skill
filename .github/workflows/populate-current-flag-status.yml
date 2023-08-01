@@ -13,7 +13,7 @@ jobs:
         node-version: '20.4.0'
         cache: 'npm'
         cache-dependency-path: current-flag-status/package-lock.json
-    - name: Install Dependencies
-        run: npm ci --ignore-scripts
+    - name: Install Depdendencies
+      run: npm ci
     - name: Run Flag Status Retrieval Script
-        run: node current-flag-status/retrieve-current-flag-status.js
+      run: node current-flag-status/retrieve-current-flag-status.js
