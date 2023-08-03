@@ -1,6 +1,7 @@
 /* *
  * The basis for this Alexa Skill comes from the Alexa SDK and instructions provided for getting started.
- * To request an API key for the endpoint returning the current flag color, please contact me (Paul Rosenthal).
+ * The flag status is retrieved from the https://github.com/PaulRosenthal/Panama-City-Beach-Flags-Alexa-Skill
+ * GitHub repository. The repository uses a GitHub Action to periodically check for and update the flag status.
  * */
  
 const Alexa = require('ask-sdk-core');
@@ -10,16 +11,16 @@ async function getDetailedFlagDescription(flag_description) {
     // Parse the flag description in lower case to identify
     // the flag's current color along with a description.
     flag_description = flag_description.toLowerCase();
-    if (flag_description.includes("low")) {
+    if (flag_description.includes("low hazard") || flag_description.includes("green")) {
         flag_description = "green. This color indicates generally low hazard with calm conditions"
-    } else if (flag_description.includes("medium")) {
+    } else if (flag_description.includes("medium") || flag_description.includes("yellow")) {
         flag_description = "yellow. This color indicates medium hazard, moderate surf and/or strong currents"
-    } else if (flag_description.includes("strong")) {
+    } else if (flag_description.includes("strong") || flag_description.includes("red")) {
         flag_description = "red. This color indicates strong surf and/or currents, and you should not enter the water above knee level"
-    } else if (flag_description.includes("closed")) {
+    } else if (flag_description.includes("closed") || flag_description.includes("double red")) {
         flag_description = "double red. The water is closed to the public"
     }
-    if (flag_description.includes("marine")) {
+    if (flag_description.includes("marine") || flag_description.includes("purple")) {
         var purple_flag = ". Purple flags are also flying on the beach, indicating dangerous marine life such as jellyfish are present"
         flag_description = flag_description + purple_flag
     }
@@ -38,31 +39,12 @@ const LaunchRequestHandler = {
         ' status. Please try again soon. Say "Cancel" to exit.';
         
         try {
-            var flag_description = await axios({
-                url: "https://wrapapi.com/use/PaulRosenthal/panama_city_beach_flags/current_flag_description/latest",
-                method: 'post',
-                data: {
-                    "wrapAPIKey": "[API_KEY]"
-                }
-                
-            
-             }).then(function(data) {
-                    var api_response_body = data.data.data
-                    // The API response body is not properly formatted JSON,
-                    // using single quotes instead of double quotes. To fix this,
-                    // the single quotes JSON response is converted to a string.
-                    // The string is manipulated to replace single quotes with
-                    // double quotes. Finally, the string is converted back
-                    // to a JSON object where its elements can be accessed as
-                    // intended.
-                    var api_response_body_string = JSON.stringify(api_response_body)
-                    api_response_body_string.replace(/'/g, '"') 
-                     var formatted_json_api_response_body = JSON.parse(api_response_body_string)
-                     flag_description = formatted_json_api_response_body["flag_description"] 
+            var flag_description = await axios.get("https://raw.githubusercontent.com/PaulRosenthal/Panama-City-Beach-Flags-Alexa-Skill/main/current-flag-status.txt").then(function(response) {
+                    var flag_description = response.data
                      if (flag_description === undefined) {
                          throw new Error('The flag status did not return properly from the API.')
                      }
-                    console.log(flag_description)
+                    console.log("The status retrieved was: " + flag_description)
                     return flag_description
                })
         
@@ -226,4 +208,3 @@ exports.handler = Alexa.SkillBuilders.custom()
         ErrorHandler)
     .withCustomUserAgent('sample/hello-world/v1.2')
     .lambda();
-    
