@@ -19,8 +19,9 @@ jobs:
     - name: Run Flag Status Retrieval Script
       run: node current-flag-status/retrieve-current-flag-status.js
     - name: Commit Flag Status File
-      run:
+      run: |
         git config --global user.name 'Paul Rosenthal'
         git config --global user.email 'Paul.H.Rosenthal@iCloud.com'
-        git commit -am "[Automatic Commit] Beach Flag Status"
+        git add current-flag-status.txt
+        git commit -m "[Automatic Commit] Beach Flag Status"
         git push
