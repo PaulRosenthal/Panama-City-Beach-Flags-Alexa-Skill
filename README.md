@@ -9,7 +9,3 @@ The skill works by requesting the flag status saved as a [text file in this repo
 This skill has been published and is available on Alexa devices (including iOS and Android devices with the Alexa app). To use it, simply say "Alexa, enable Panama City Beach Safety Flags." Then, any time you'd like to hear the current flag status, just say "Alexa, Panama City Beach Flags."
 
 <a href="https://www.amazon.com/dp/B0B1M6ZC75?ref&ref=cm_sw_em_r_as_dp_UNqfq3K6RDMoO"><img src="/img/just-ask-alexa-skill-image.png" alt="Just Ask Alexa - Panama City Beach Flags Safety Skill" class="center"></a>
-
-## API Key
-
-To request an API key for the endpoint utilized for this skill, please contact me at [Paul.H.Rosenthal@iCloud.com](mailto:Paul.H.Rosenthal@iCloud.com). Thank you!
