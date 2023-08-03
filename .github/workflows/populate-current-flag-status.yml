@@ -1,7 +1,9 @@
 name: Retrieve Current Panama City Beach, Florida Beach Flag Status
 
 on:
-  push:
+  schedule:
+    - cron: "30 * * * *" # Runs 30 minutes past every hour
+  push: # Runs each time a branch receives a push
 
 jobs:
   populate-current-flag-status:
@@ -23,5 +25,5 @@ jobs:
         git config --global user.name 'Paul Rosenthal'
         git config --global user.email 'Paul.H.Rosenthal@iCloud.com'
         git add current-flag-status.txt
-        git commit -m "[Automatic Commit] Beach Flag Status"
+        git commit -m "[Automatic Commit] Update Beach Flag Status"
         git push
