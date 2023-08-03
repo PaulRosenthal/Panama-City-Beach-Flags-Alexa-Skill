@@ -1,8 +1,6 @@
 name: Retrieve Current Panama City Beach, Florida Beach Flag Status
 
 on:
-  push: # Runs each time the main branch receives a push
-    - branches: [ main ]
   schedule:
     - cron: "30 * * * *" # Runs 30 minutes past every hour
 
