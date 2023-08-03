@@ -2,7 +2,7 @@
 
 This repository contains the source code for an Alexa Skill that provides the user with the current beach safety flag status for Panama City Beach, Florida. The skill can also provide additional safety information to the user.
 
-The skill works by requesting the flag status saved as a [text file in this repository](/current-flag-status.txt). The text file is updated every 30 minutes [via GitHub Actions](/.github/workflows/populate-current-flag-status.yml). The flag status originates from https://www.visitpanamacitybeach.com/.
+The skill works by requesting the flag status saved as a [text file in this repository](/current-flag-status.txt). The text file is updated every 30 minutes [via GitHub Actions](/.github/workflows/populate-current-flag-status.yml). The flag status originates from https://www.visitpanamacitybeach.com.
 
 ## Using the Skill
 
