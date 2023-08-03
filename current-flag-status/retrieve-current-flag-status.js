@@ -38,7 +38,7 @@ async function main() {
   // Print the result
   console.log("The flag status text is: " + result);
 
-  fs.writeFile('current-flag-status.txt', result, (err) => {
+  fs.writeFile(__dirname + '/../current-flag-status.txt', result, (err) => {
     if (err) {
       console.log(err);
     } else {
