@@ -25,5 +25,5 @@ jobs:
         git config --global user.name 'Paul Rosenthal'
         git config --global user.email 'Paul.H.Rosenthal@iCloud.com'
         git add current-flag-status.txt
-        git commit -m "[Automatic Commit] Update Beach Flag Status"
+        git commit -m "[Automatic Commit] Update Beach Flag Status" --allow-empty # Commits the file even if the flag status has not changed since the last update.
         git push
