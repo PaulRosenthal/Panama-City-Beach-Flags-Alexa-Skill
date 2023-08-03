@@ -1,0 +1,29 @@
+name: Retrieve Current Panama City Beach, Florida Beach Flag Status
+
+on:
+  schedule:
+    - cron: "30 * * * *" # Runs 30 minutes past every hour
+  push: # Runs each time a branch receives a push
+
+jobs:
+  populate-current-flag-status:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '20.4.0'
+        cache: 'npm'
+        cache-dependency-path: current-flag-status/package-lock.json
+    - name: Install Depdendencies
+      run: npm ci
+      working-directory: current-flag-status
+    - name: Run Flag Status Retrieval Script
+      run: node current-flag-status/retrieve-current-flag-status.js
+    - name: Commit Flag Status File
+      run: |
+        git config --global user.name 'Paul Rosenthal'
+        git config --global user.email 'Paul.H.Rosenthal@iCloud.com'
+        git add current-flag-status.txt
+        git commit -m "[Automatic Commit] Update Beach Flag Status" --allow-empty # Commits the file even if the flag status has not changed since the last update.
+        git push
