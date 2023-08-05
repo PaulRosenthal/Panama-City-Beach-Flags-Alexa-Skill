@@ -7,24 +7,25 @@
 const Alexa = require('ask-sdk-core');
 const axios = require('axios').default;
 
-async function getDetailedFlagDescription(flag_description) {
+async function getDetailedFlagDescription(flag_status) {
     // Parse the flag description in lower case to identify
     // the flag's current color along with a description.
-    flag_description = flag_description.toLowerCase();
-    if (flag_description.includes("low hazard") || flag_description.includes("green")) {
-        flag_description = "green. This color indicates generally low hazard with calm conditions"
-    } else if (flag_description.includes("medium") || flag_description.includes("yellow")) {
-        flag_description = "yellow. This color indicates medium hazard, moderate surf and/or strong currents"
-    } else if (flag_description.includes("strong") || flag_description.includes("red")) {
-        flag_description = "red. This color indicates strong surf and/or currents, and you should not enter the water above knee level"
-    } else if (flag_description.includes("closed") || flag_description.includes("double red")) {
-        flag_description = "double red. The water is closed to the public"
+    flag_status = flag_status.toLowerCase();
+    var flag_status_description;
+    if (flag_status.includes("medium") || flag_status.includes("yellow")) {
+        flag_status_description = "yellow. This color indicates medium hazard, moderate surf and/or strong currents"
+    } else if (flag_status.includes("low") || flag_status.includes("green")) {
+        flag_status_description = "green. This color indicates generally low hazard with calm conditions"
+    } else if (flag_status.includes("strong") || flag_status.includes("red")) {
+        flag_status_description = "red. This color indicates strong surf and/or currents, and you should not enter the water above knee level"
+    } else if (flag_status.includes("closed") || flag_status.includes("double red")) {
+        flag_status_description = "double red. The water is closed to the public"
     }
-    if (flag_description.includes("marine") || flag_description.includes("purple")) {
+    if (flag_status.includes("marine") || flag_status.includes("purple")) {
         var purple_flag = ". Purple flags are also flying on the beach, indicating dangerous marine life such as jellyfish are present"
-        flag_description = flag_description + purple_flag
+        flag_status_description = flag_status_description + purple_flag
     }
-    return flag_description;
+    return flag_status_description;
 }
 
 const LaunchRequestHandler = {
@@ -39,16 +40,16 @@ const LaunchRequestHandler = {
         ' status. Please try again soon. Say "Cancel" to exit.';
         
         try {
-            var flag_description = await axios.get("https://raw.githubusercontent.com/PaulRosenthal/Panama-City-Beach-Flags-Alexa-Skill/main/current-flag-status.txt").then(function(response) {
-                    var flag_description = response.data
-                     if (flag_description === undefined) {
+            var flag_status = await axios.get("https://raw.githubusercontent.com/PaulRosenthal/Panama-City-Beach-Flags-Alexa-Skill/main/current-flag-status.txt").then(function(response) {
+                    var flag_status = response.data
+                    if (flag_status === undefined) {
                          throw new Error('The flag status did not return properly from the API.')
                      }
-                    console.log("The status retrieved was: " + flag_description)
-                    return flag_description
+                    console.log("The status retrieved was: " + flag_status)
+                    return flag_status
                })
         
-        var detailed_flag_description = await getDetailedFlagDescription(flag_description);
+        var detailed_flag_description = await getDetailedFlagDescription(flag_status);
         
         speakOutput = 'The flag status in Panama City Beach is currently ' + detailed_flag_description +
         '. Would you like to learn more?';
