@@ -9,9 +9,9 @@
   "author": "Paul Rosenthal",
   "license": "Apache License",
   "dependencies": {
-    "ask-sdk-core": "^2.7.0",
-    "ask-sdk-model": "^1.83.0",
-    "aws-sdk": "^2.326.0",
+    "ask-sdk-core": "^2.14.0",
+    "ask-sdk-model": "^1.86.0",
+    "aws-sdk": "^2.1450.0",
     "axios": "^0.27.2"
   }
 }
