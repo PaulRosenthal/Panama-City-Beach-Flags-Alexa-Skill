@@ -16,11 +16,12 @@ async function getDetailedFlagDescription(flag_status) {
         flag_status_description = "yellow. This color indicates medium hazard, moderate surf and/or strong currents"
     } else if (flag_status.includes("low") || flag_status.includes("green")) {
         flag_status_description = "green. This color indicates generally low hazard with calm conditions"
-    } else if (flag_status.includes("strong") || flag_status.includes("red")) {
-        flag_status_description = "red. This color indicates strong surf and/or currents, and you should not enter the water above knee level"
     } else if (flag_status.includes("closed") || flag_status.includes("double red")) {
         flag_status_description = "double red. The water is closed to the public"
+    } else if (flag_status.includes("strong") || flag_status.includes("red")) {
+        flag_status_description = "red. This color indicates strong surf and/or currents, and you should not enter the water above knee level"
     }
+    
     if (flag_status.includes("marine") || flag_status.includes("purple")) {
         var purple_flag = ". Purple flags are also flying on the beach, indicating dangerous marine life such as jellyfish are present"
         flag_status_description = flag_status_description + purple_flag
