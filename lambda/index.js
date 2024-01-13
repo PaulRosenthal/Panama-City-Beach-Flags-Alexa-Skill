@@ -18,7 +18,7 @@ async function getDetailedFlagDescription(flag_status) {
         flag_status_description = "green. This color indicates generally low hazard with calm conditions"
     } else if (flag_status.includes("closed") || flag_status.includes("double red")) {
         flag_status_description = "double red. The water is closed to the public"
-    } else if (flag_status.includes("strong") || flag_status.includes("red")) {
+    } else if (flag_status.includes("strong") || flag_status.includes("red") || flag_status.includes("high")) {
         flag_status_description = "red. This color indicates strong surf and/or currents, and you should not enter the water above knee level"
     }
     
