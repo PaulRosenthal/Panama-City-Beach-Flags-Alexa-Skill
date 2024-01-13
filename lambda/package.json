@@ -11,7 +11,8 @@
   "dependencies": {
     "ask-sdk-core": "^2.14.0",
     "ask-sdk-model": "^1.86.0",
-    "aws-sdk": "^2.1483.0",
-    "axios": "^1.6.0"
+    "aws-sdk": "^2.1535.0",
+    "axios": "^1.6.5",
+    "npm-update": "^3.0.1"
   }
 }
