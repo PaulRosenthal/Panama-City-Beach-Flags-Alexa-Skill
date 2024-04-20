@@ -27,6 +27,11 @@ jobs:
       run: |
         git config --global user.name 'Paul Rosenthal'
         git config --global user.email 'Paul.H.Rosenthal@iCloud.com'
-        git add current-flag-status.txt
-        git commit -m "[Automatic Commit] Update Beach Flag Status"
-        git push
+        # The lines below assess if the "current-flag-status.txt" has changed. If the file
+        # is unchanged, the command exits with a 0. If there are differences, a non-zero value
+        # will be returned and the second portion of the command following the "||" operator will
+        # be run.
+        git diff --quiet current-flag-status.txt \
+        || (git add current-flag-status.txt \
+            && git commit -m "[Automatic Commit] Update Beach Flag Status" \
+            && git push)
