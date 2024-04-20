@@ -27,7 +27,7 @@ jobs:
       run: |
         git config --global user.name 'Paul Rosenthal'
         git config --global user.email 'Paul.H.Rosenthal@iCloud.com'
-        # The lines below assess if the "current-flag-status.txt" has changed. If the file
+        # The lines below first assess if the "current-flag-status.txt" has changed. If the file
         # is unchanged, the command exits with a 0. If there are differences, a non-zero value
         # will be returned and the second portion of the command following the "||" operator will
         # be run.
