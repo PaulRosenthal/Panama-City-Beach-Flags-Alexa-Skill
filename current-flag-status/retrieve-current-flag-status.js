@@ -13,14 +13,31 @@ async function getFlagDescription(url) {
       // Get the data from the response
       var data = response.data;
       const dom = new JSDOM(response.data);
-      const flagStatusText = dom.window.document.querySelector('.flag-description').textContent;
+      var flag_status = dom.window.document.querySelector('.flag-description').textContent;
       // Check if the element exists
-      if (flagStatusText) {
-        // Return the text
-        return flagStatusText;
+      if (flag_status) {
+        // Parse the flag description in lower case to identify
+        // the flag's current color along with a description.
+        flag_status = flag_status.toLowerCase();
+        var flag_status_description;
+        if (flag_status.includes("medium") || flag_status.includes("yellow")) {
+            flag_status_description = "yellow. This color indicates medium hazard, moderate surf and/or strong currents."
+        } else if (flag_status.includes("low") || flag_status.includes("green")) {
+            flag_status_description = "green. This color indicates generally low hazard with calm conditions."
+        } else if (flag_status.includes("closed") || flag_status.includes("double red") || flag_status.includes("high hazard")) {
+            flag_status_description = "double red. The water is closed to the public."
+        } else if (flag_status.includes("strong") || flag_status.includes("red") || flag_status.includes("high")) {
+            flag_status_description = "red. This color indicates strong surf and/or currents, and you should not enter the water above knee level."
+        }
+        
+        if (flag_status.includes("marine") || flag_status.includes("purple")) {
+            var purple_flag = ". Purple flags are also flying on the beach, indicating dangerous marine life such as jellyfish are present."
+            flag_status_description = flag_status_description + purple_flag
+        }
+        return "The beach safety flags in Panama City Beach are " + flag_status_description;
       } else {
         // Throw an error
-        throw new Error("No flag description found");
+        throw new Error("No flag description found.");
       }
     })
     // Define a callback function that runs when the request is rejected
@@ -42,7 +59,7 @@ async function main() {
     if (err) {
       console.log(err);
     } else {
-      console.log('The output has been saved to the file.');
+      console.log('The flag status has been saved to the current-flag-status.txt file.');
     }
   });
 }
