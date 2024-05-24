@@ -59,7 +59,7 @@ async function main() {
     if (err) {
       console.log(err);
     } else {
-      console.log('The output has been saved to the file.');
+      console.log('The flag status has been saved to the current-flag-status.txt file.');
     }
   });
 }
