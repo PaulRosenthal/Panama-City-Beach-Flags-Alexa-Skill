@@ -13,7 +13,7 @@ async function getFlagDescription(url) {
       // Get the data from the response
       var data = response.data;
       const dom = new JSDOM(response.data);
-      var flag_status = dom.window.document.querySelector('.beach-flag').src;
+      var flag_status = dom.window.document.querySelector('.flag-description').textContent;
       // Check if the element exists
       if (flag_status) {
         // Parse the flag description in lower case to identify
